@@ -12,22 +12,25 @@ protected int value;
     }
 
     public void setValue(int newValue) {
-        this.value = newValue;
-        if ((newValue < limit) && newValue > 0) {
-
+        if (newValue > 0 && newValue < limit) {
+            this.value = newValue;
         }
     }
-    public String getDisplayValue(){
-        String strvalue = Integer.toString(value);
-        return strvalue;
+
+    public String getDisplayValue() {
+        String display = null;
+        if (value > 9) {
+            display = String.valueOf(value);
+        } else if (value < 10) {
+            display = "0" + value;
+        }
+        return display;
     }
 
-    public int increment(){
+    public void increment() {
         value++;
-        if (value >= limit){
+        if (value >= limit) {
             value = 0;
         }
-        return value;
     }
-
 }
